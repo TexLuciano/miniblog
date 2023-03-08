@@ -78,9 +78,9 @@ export const useAuthentication = () => {
         systemErrorMessage = 'Ocorreu um erro, tente novamente mais tarde.';
       }
       setError(systemErrorMessage);
-      
-    }finally{setLoading(false);}
-   
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {

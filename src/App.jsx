@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
-import { Home } from './pages/Home/Home';
+import {Home} from './pages/Home/Home'
 import About from './pages/About/About';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -12,6 +12,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useAuthentication } from './hooks/useAuthentication';
 import CreaatePost from './pages/CreatePost/CreaatePost';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Search from './pages/Search/Search';
+import Post from './pages/Post/Post';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -38,6 +40,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/posts/:id" element={<Post />} />
               <Route
                 path="/login"
                 element={!user ? <Login /> : <Navigate to={'/'} />}
@@ -50,7 +54,10 @@ function App() {
                 path="/posts/create"
                 element={user ? <CreaatePost /> : <Navigate to={'/login'} />}
               />
-              <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to={'/login'}/>} />
+              <Route
+                path="/dashboard"
+                element={user ? <Dashboard /> : <Navigate to={'/login'} />}
+              />
             </Routes>
           </div>
           <Footer />
